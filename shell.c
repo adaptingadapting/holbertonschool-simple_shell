@@ -43,8 +43,12 @@ loop:
 			token[i] = strtok(NULL, delim);
 		}
 		if (programStat(token[0]))
+		{
 			token[0] = programStat(token[0]);
-		executePathProgram(token);
+			executePathProgram(token);
+		}
+		else
+			printf("Command not found\n");
 	}
 	return (0);
 }
