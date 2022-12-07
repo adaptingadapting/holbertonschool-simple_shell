@@ -10,7 +10,6 @@ void executePathProgram(char **token)
 {
 	int status;
 	pid_t pid;
-	extern char **environ;
 
 	pid = fork();
 	if (pid == -1)
