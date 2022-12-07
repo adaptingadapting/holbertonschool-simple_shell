@@ -8,10 +8,10 @@
 
 char *programStat(char *line)
 {
-	char *token, *freeCp, *freeCp2;
+	char *token;
 	char *i = getenv("PATH");
-	char *cp = freeCp = malloc(200);
-	char *cp2 = freeCp2 = malloc(200);
+	char *cp = malloc(200);
+	char *cp2 = malloc(200);
 	char *duptoken = malloc(300);
 	struct stat st;
 
@@ -27,9 +27,14 @@ char *programStat(char *line)
 		strcat(duptoken, cp2);
 		if (stat(duptoken, &st) == 0)
 		{
+			free(cp);
+			free(cp2);
 			return (duptoken);
 		}
 		token = strtok(NULL, ":");
 	}
+	free(cp);
+	free(cp2);
+	free(duptoken);
 	return (NULL);
 }
