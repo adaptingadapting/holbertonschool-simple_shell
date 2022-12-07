@@ -13,5 +13,5 @@ extern char **environ;
 
 char *programStat(char *line);
 void executePathProgram(char **token);
-
+void tokenize(char **token, char *delim);
 #endif
