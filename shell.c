@@ -14,8 +14,7 @@ int main(void)
 {
 	int i;
 	char delim[] = {" \n:\t"};
-	char *token[80] = {0};
-	char *userInput = NULL;
+	char *userInput, *string, *token[80] = {0};
 	size_t buffsize = 0;
 
 loop:
@@ -36,19 +35,19 @@ loop:
 			free(userInput);
 			exit(0);
 		}
-		i = 0;
-		while (token[i])
+		tokenize(token, delim);
+		string = programStat(token[0]);
+		if (string)
 		{
-			i++;
-			token[i] = strtok(NULL, delim);
-		}
-		if (programStat(token[0]))
-		{
-			token[0] = programStat(token[0]);
+			token[0] = string;
 			executePathProgram(token);
+			free(string);
 		}
 		else
+		{
+			free(string);
 			printf("Command not found\n");
+		}
 	}
 	return (0);
 }
