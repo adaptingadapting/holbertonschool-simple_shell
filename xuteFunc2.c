@@ -21,5 +21,5 @@ void xcuteFunc(char *string, char **array)
 		}
 	}
 	else
-		printf("Command not found\n");
+		perror("hsh");
 }
