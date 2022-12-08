@@ -12,9 +12,10 @@
 
 int main(void)
 {
-	int i;
 	char delim[] = {" \n:\t"};
-	char *userInput, *string, *token[80] = {0};
+	char *userInput = NULL;
+	char *string = NULL;
+	char *token[80] = {0};
 	size_t buffsize = 0;
 
 loop:
@@ -24,7 +25,8 @@ loop:
 			write(0, "$ ", 2);
 		if (getline(&userInput, &buffsize, stdin) == (-1))
 		{
-			free(userInput);
+			if (userInput)
+				free(userInput);
 			return (-1);
 		}
 		token[0] = strtok(userInput, delim);
@@ -37,17 +39,7 @@ loop:
 		}
 		tokenize(token, delim);
 		string = programStat(token[0]);
-		if (string)
-		{
-			token[0] = string;
-			executePathProgram(token);
-			free(string);
-		}
-		else
-		{
-			free(string);
-			printf("Command not found\n");
-		}
+		xcuteFunc(string, token);
 	}
 	return (0);
 }
