@@ -10,9 +10,9 @@ char *programStat(char *line)
 {
 	char *token;
 	char *i = getenv("PATH");
-	char *cp = malloc(200);
-	char *cp2 = malloc(200);
-	char *duptoken = malloc(300);
+	char *cp = malloc(strlen(i) + 1);
+	char *cp2 = malloc(strlen(line) + 1);
+	char *duptoken = malloc(strlen(i) + strlen(line) + 1);
 	struct stat st;
 
 	if (stat(line, &st) == 0)
