@@ -21,5 +21,6 @@ int _strcmp(char *str1, char *str2);
 char *_strcpy(char *dest, char *src);
 char *_strcat(char *dest, char *src);
 void sigintHandler(int sig_num);
+char *_getenv(char *str);
 
 #endif
