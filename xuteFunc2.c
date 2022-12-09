@@ -11,7 +11,7 @@ void xcuteFunc(char *string, char **array)
 {
 	if (string)
 	{
-		if (!(strcmp(array[0], string)))
+		if (!(_strcmp(array[0], string)))
 			executePathProgram(array);
 		else
 		{
