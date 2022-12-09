@@ -1,8 +1,3 @@
-#include<sys/wait.h>
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
-#include <unistd.h>
 #include "main.h"
 
 /**
@@ -17,7 +12,8 @@ int main(void)
 	char *string = NULL;
 	char *token[80] = {0};
 	size_t buffsize = 0;
-
+	
+	signal(SIGINT, sigintHandler);
 loop:
 	for (;;)
 	{
