@@ -1,6 +1,7 @@
 #ifndef main_h
 #define main_h
 
+#include <signal.h>
 #include <stdio.h>
 #include <unistd.h>
 #include <string.h>
@@ -19,5 +20,6 @@ int _strlen(char *str);
 int _strcmp(char *str1, char *str2);
 char *_strcpy(char *dest, char *src);
 char *_strcat(char *dest, char *src);
+void sigintHandler();
 
 #endif
