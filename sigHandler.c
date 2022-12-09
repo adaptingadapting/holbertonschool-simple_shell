@@ -5,7 +5,7 @@
  * @sig_num: signal number
  */
 
-void sigintHandler()
+void sigintHandler(void)
 {
 	signal(SIGINT, sigintHandler);
 	printf("\n$ ");
