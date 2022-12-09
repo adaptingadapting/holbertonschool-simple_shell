@@ -12,7 +12,7 @@ int main(void)
 	char *string = NULL;
 	char *token[80] = {0};
 	size_t buffsize = 0;
-	
+
 	signal(SIGINT, sigintHandler);
 loop:
 	for (;;)
