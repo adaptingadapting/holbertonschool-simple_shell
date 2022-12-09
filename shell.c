@@ -32,7 +32,7 @@ loop:
 		token[0] = strtok(userInput, delim);
 		if (!token[0])
 			goto loop;
-		if (!strcmp(token[0], "exit"))
+		if (!_strcmp(token[0], "exit"))
 		{
 			free(userInput);
 			exit(0);
