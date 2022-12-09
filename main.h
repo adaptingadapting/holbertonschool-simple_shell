@@ -15,5 +15,9 @@ char *programStat(char *line);
 void executePathProgram(char **token);
 void tokenize(char **token, char *delim);
 void xcuteFunc(char *string, char **token);
+int _strlen(char *str);
+int _strcmp(char *str1, char *str2);
+char *_strcpy(char *dest, char *src);
+char *_strcat(char *dest, char *src);
 
 #endif
