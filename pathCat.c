@@ -9,7 +9,7 @@
 char *programStat(char *line)
 {
 	char *token;
-	char *i = getenv("PATH");
+	char *i = _getenv("PATH");
 	char *cp = malloc(_strlen(i) + 1);
 	char *cp2 = malloc(_strlen(line) + 1);
 	char *duptoken = malloc(_strlen(i) + _strlen(line) + 1);
@@ -17,6 +17,7 @@ char *programStat(char *line)
 
 	if (stat(line, &st) == 0)
 	{
+		free(i);
 		free(cp);
 		free(cp2);
 		free(duptoken);
@@ -32,6 +33,7 @@ char *programStat(char *line)
 		_strcat(duptoken, cp2);
 		if (stat(duptoken, &st) == 0)
 		{
+			free(i);
 			free(cp);
 			free(cp2);
 			return (duptoken);
@@ -39,6 +41,7 @@ char *programStat(char *line)
 		token = strtok(NULL, ":");
 	}
 	free(cp);
+	free(i);
 	free(cp2);
 	free(duptoken);
 	return (NULL);
