@@ -10,9 +10,9 @@ char *programStat(char *line)
 {
 	char *token;
 	char *i = getenv("PATH");
-	char *cp = malloc(strlen(i) + 1);
-	char *cp2 = malloc(strlen(line) + 1);
-	char *duptoken = malloc(strlen(i) + strlen(line) + 1);
+	char *cp = malloc(_strlen(i) + 1);
+	char *cp2 = malloc(_strlen(line) + 1);
+	char *duptoken = malloc(_strlen(i) + _strlen(line) + 1);
 	struct stat st;
 
 	if (stat(line, &st) == 0)
@@ -22,14 +22,14 @@ char *programStat(char *line)
 		free(duptoken);
 		return (line);
 	}
-	strcpy(cp, i);
-	strcpy(cp2, line);
+	_strcpy(cp, i);
+	_strcpy(cp2, line);
 	token = strtok(cp, ":");
 	while (token)
 	{
-		strcpy(duptoken, token);
-		strcat(duptoken, "/");
-		strcat(duptoken, cp2);
+		_strcpy(duptoken, token);
+		_strcat(duptoken, "/");
+		_strcat(duptoken, cp2);
 		if (stat(duptoken, &st) == 0)
 		{
 			free(cp);
