@@ -7,7 +7,7 @@
 
 int main(void)
 {
-	char delim[] = {" \n:\t"};
+	char delim[] = {" \n\t"};
 	char *userInput = NULL;
 	char *string = NULL;
 	char *token[80] = {0};
