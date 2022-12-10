@@ -60,10 +60,13 @@ char *_strcat(char *dest, char *src)
 
 int _strcmp(char *s1, char *s2)
 {
-	int i = 0;
+	int i;
 
-	for (; s1[i] && s2[i]; i++)
+	for (i = 0; s1[i]; i++)
 		if (s1[i] != s2[i])
 			return (s1[i] - s2[i]);
+	for (i = 0; s2[i]; i++)
+		if (s2[i] != s1[i])
+			return (s2[i] - s1[i]);
 	return (0);
 }
