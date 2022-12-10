@@ -19,7 +19,7 @@ void executePathProgram(char **token)
 	else
 	{
 		if (execve(token[0], token, environ) == -1)
-			printf("$ %s is not a recognized command\n", token[0]);
+			perror("hsh");
 		exit(1);
 	}
 }
