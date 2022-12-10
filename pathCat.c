@@ -15,7 +15,7 @@ char *programStat(char *line)
 	char *duptoken = malloc(_strlen(i) + _strlen(line) + 1);
 	struct stat st;
 
-	if (stat(line, &st) == 0)
+	if ((stat(line, &st) == 0) && st.st_mode == 33261)
 	{
 		free(i);
 		free(cp);
@@ -31,7 +31,7 @@ char *programStat(char *line)
 		_strcpy(duptoken, token);
 		_strcat(duptoken, "/");
 		_strcat(duptoken, cp2);
-		if (stat(duptoken, &st) == 0)
+		if ((stat(duptoken, &st) == 0) && st.st_mode == 33261)
 		{
 			free(i);
 			free(cp);
