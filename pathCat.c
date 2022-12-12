@@ -10,11 +10,14 @@ char *programStat(char *line)
 {
 	char *token;
 	char *i = _getenv("PATH");
-	char *cp = malloc(_strlen(i) + 1);
-	char *cp2 = malloc(_strlen(line) + 1);
-	char *duptoken = malloc(_strlen(i) + _strlen(line) + 1);
+	char *cp, *cp2, *duptoken;
 	struct stat st;
 
+	if (!(i))
+		return (NULL);
+	cp = malloc(_strlen(i) + 1);
+	cp2 = malloc(_strlen(line) + 1);
+	duptoken = malloc(_strlen(i) + _strlen(line) + 1);
 	if ((stat(line, &st) == 0) && st.st_mode == 33261)
 	{
 		free(i);
