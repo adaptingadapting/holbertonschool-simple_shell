@@ -20,6 +20,6 @@ void executePathProgram(char **token)
 	{
 		if (execve(token[0], token, environ) == -1)
 			perror("hsh");
-		exit(1);
+		exit(0);
 	}
 }
