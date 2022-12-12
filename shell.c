@@ -23,7 +23,7 @@ loop:
 		{
 			if (userInput)
 				free(userInput);
-			return (-1);
+			exit(0);
 		}
 		token[0] = strtok(userInput, delim);
 		if (!token[0])
@@ -37,5 +37,5 @@ loop:
 		string = programStat(token[0]);
 		xcuteFunc(string, token);
 	}
-	return (0);
+	exit(0);
 }
