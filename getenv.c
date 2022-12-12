@@ -16,17 +16,28 @@ char *_getenv(char *str)
 	for (i = 0; environ[i]; i++)
 	{
 		buffer = malloc(_strlen(environ[i]) + 1);
-		_strcpy(buffer, environ[i]);
-		token[0] = strtok(buffer, "=\n");
-		if (!(_strcmp(token[0], str)))
+		if (environ[i])
 		{
-			token[1] = strtok(NULL, "=\n");
-			rturnString = malloc(_strlen(token[1]) + 1);
-			_strcpy(rturnString, token[1]);
+			_strcpy(buffer, environ[i]);
+			token[0] = strtok(buffer, "=\n");
+			if (!(_strcmp(token[0], str)))
+			{
+				token[1] = strtok(NULL, "=\n");
+				if (token[1])
+				{
+					rturnString = malloc(_strlen(token[1]) + 1);
+					_strcpy(rturnString, token[1]);
+					free(buffer);
+					return (rturnString);
+				}
+				else
+				{
+					free(buffer);
+					return (NULL);
+				}
+			}
 			free(buffer);
-			return (rturnString);
 		}
-		free(buffer);
 	}
 	return (NULL);
 }
