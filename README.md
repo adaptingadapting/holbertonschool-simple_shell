@@ -65,6 +65,7 @@ This file contains one function named `executePathProgram` that takes the input 
 This file contains the function `_getenv`, that does the exact same as its C Library counterpart, but as it isn't allowed in the project, we use our own.
 
 <h4>sigHandler.c</h4>
+This function catches certain commands from the keyboard, like ctrl+c. 
 
 <h4>xuteFunc.c</h4>
 This file contains a function called xcuteFunc, that shortcuts the execution progress by checking the path of the program and seeing if it is compatible.
