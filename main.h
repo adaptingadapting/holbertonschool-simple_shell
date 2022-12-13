@@ -1,6 +1,7 @@
 #ifndef main_h
 #define main_h
 
+#include <errno.h>
 #include <signal.h>
 #include <stdio.h>
 #include <unistd.h>
@@ -13,9 +14,9 @@
 extern char **environ;
 
 char *programStat(char *line);
-void executePathProgram(char **token);
+int executePathProgram(char **token);
 void tokenize(char **token, char *delim);
-void xcuteFunc(char *string, char **token);
+int xcuteFunc(char *string, char **token);
 int _strlen(char *str);
 int _strcmp(char *str1, char *str2);
 char *_strcpy(char *dest, char *src);
