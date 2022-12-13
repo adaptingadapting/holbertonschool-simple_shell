@@ -4,22 +4,28 @@
  * xcuteFunc - executea function
  * @string: string to compare
  * @array: array to compare
- * Retrun: 0
+ * Return: 0
  */
 
-void xcuteFunc(char *string, char **array)
+int xcuteFunc(char *string, char **array)
 {
+	int rturnV;
+
 	if (string)
 	{
 		if (!(_strcmp(array[0], string)))
-			executePathProgram(array);
+			rturnV = executePathProgram(array);
 		else
 		{
 			array[0] = string;
-			executePathProgram(array);
+			rturnV = executePathProgram(array);
 			free(string);
 		}
 	}
 	else
-		perror("hsh");
+	{
+		fprintf(stderr, "%s: not found\n", array[0]);
+		rturnV = 127;
+	}
+	return (rturnV);
 }
