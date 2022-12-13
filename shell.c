@@ -12,6 +12,7 @@ int main(void)
 	char *string = NULL;
 	char *token[80] = {0};
 	size_t buffsize = 0;
+	int olde = 0;
 
 	signal(SIGINT, sigintHandler);
 loop:
@@ -23,7 +24,7 @@ loop:
 		{
 			if (userInput)
 				free(userInput);
-			exit(0);
+			exit(olde);
 		}
 		token[0] = strtok(userInput, delim);
 		if (!token[0])
@@ -35,7 +36,6 @@ loop:
 		}
 		tokenize(token, delim);
 		string = programStat(token[0]);
-		xcuteFunc(string, token);
+		olde = xcuteFunc(string, token);
 	}
-	exit(0);
 }
