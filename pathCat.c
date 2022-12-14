@@ -17,14 +17,14 @@ char *programStat(char *line)
 		return ("/usr/bin/env");
 	if (!(i))
 	{
-		cp2 = malloc(_strlen(line) + 1);
-		duptoken = malloc(_strlen(line) + 1);
-		cp = malloc(1);
+	if ((stat(line, &st) == 0) && st.st_mode == 33261)
+		return (line);
+	else
+		return (NULL);
 	}
 	else
 	{
-		cp = malloc(_strlen(i) + 1);
-		cp2 = malloc(_strlen(line) + 1);
+		cp = malloc(_strlen(i) + 1), cp2 = malloc(_strlen(line) + 1);
 		duptoken = malloc(_strlen(i) + _strlen(line) + 1);
 	}
 	if ((stat(line, &st) == 0) && st.st_mode == 33261)
