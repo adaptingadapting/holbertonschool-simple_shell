@@ -13,28 +13,32 @@ char *programStat(char *line)
 	char *cp, *cp2, *duptoken;
 	struct stat st;
 
+	if (!_strcmp(line, "env"))
+		return ("/usr/bin/env");
 	if (!(i))
 	{
-		if ((stat(line, &st) == 0) && st.st_mode == 33261)
-			return (line);
-		return (NULL);
+		cp2 = malloc(_strlen(line) + 1);
+		duptoken = malloc(_strlen(line) + 1);
+		cp = malloc(1);
 	}
-	cp = malloc(_strlen(i) + 1);
-	cp2 = malloc(_strlen(line) + 1);
-	duptoken = malloc(_strlen(i) + _strlen(line) + 1);
+	else
+	{
+		cp = malloc(_strlen(i) + 1);
+		cp2 = malloc(_strlen(line) + 1);
+		duptoken = malloc(_strlen(i) + _strlen(line) + 1);
+	}
 	if ((stat(line, &st) == 0) && st.st_mode == 33261)
 	{
 		free4(cp, i, cp2, duptoken);
 		return (line);
 	}
-	_strcpy(cp, i);
-	_strcpy(cp2, line);
-	token = strtok(cp, ":");
+	if (i)
+		_strcpy(cp, i);
+	_strcpy(cp2, line), token = strtok(cp, ":");
 	while (token)
 	{
 		_strcpy(duptoken, token);
-		_strcat(duptoken, "/");
-		_strcat(duptoken, cp2);
+		_strcat(duptoken, "/"), _strcat(duptoken, cp2);
 		if ((stat(duptoken, &st) == 0) && st.st_mode == 33261)
 		{
 			free3(i, cp, cp2);
