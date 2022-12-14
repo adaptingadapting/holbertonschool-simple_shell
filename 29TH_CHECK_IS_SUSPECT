@@ -1,0 +1,4 @@
+the 29th check in the "simple shell 0.3" task copies the ls command into the working directory,
+then it deletes the PATH and tries to execute ls. The expected output is for your shell to say
+that ls doesnt exist, but it should. in our shell and in the sh program, even with no path
+the command will execute if it is in the current directory.
