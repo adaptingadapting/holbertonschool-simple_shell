@@ -32,7 +32,7 @@ int xcuteFunc(char *string, char **array, int *pcount)
 		pcount2 = *pcount;
 		pcount2++;
 		*pcount = pcount2;
-		fprintf(stderr, "./hsh: %d %s: not found\n", pcount2, array[0]);
+		fprintf(stderr, "./hsh: %d: %s: not found\n", pcount2, array[0]);
 		rturnV = 127;
 	}
 	return (rturnV);
