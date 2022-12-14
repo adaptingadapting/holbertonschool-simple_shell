@@ -14,16 +14,17 @@ char *programStat(char *line)
 	struct stat st;
 
 	if (!(i))
+	{
+		if ((stat(line, &st) == 0) && st.st_mode == 33261)
+			return (line);
 		return (NULL);
+	}
 	cp = malloc(_strlen(i) + 1);
 	cp2 = malloc(_strlen(line) + 1);
 	duptoken = malloc(_strlen(i) + _strlen(line) + 1);
 	if ((stat(line, &st) == 0) && st.st_mode == 33261)
 	{
-		free(i);
-		free(cp);
-		free(cp2);
-		free(duptoken);
+		free4(cp, i, cp2, duptoken);
 		return (line);
 	}
 	_strcpy(cp, i);
@@ -36,16 +37,11 @@ char *programStat(char *line)
 		_strcat(duptoken, cp2);
 		if ((stat(duptoken, &st) == 0) && st.st_mode == 33261)
 		{
-			free(i);
-			free(cp);
-			free(cp2);
+			free3(i, cp, cp2);
 			return (duptoken);
 		}
 		token = strtok(NULL, ":");
 	}
-	free(cp);
-	free(i);
-	free(cp2);
-	free(duptoken);
+	free4(i, cp, cp2, duptoken);
 	return (NULL);
 }
