@@ -4,12 +4,14 @@
  * xcuteFunc - executea function
  * @string: string to compare
  * @array: array to compare
+ * @pcount: pointer to counter
  * Return: 0
  */
 
-int xcuteFunc(char *string, char **array)
+int xcuteFunc(char *string, char **array, int *pcount)
 {
 	int rturnV;
+	int pcount2;
 
 	if (string)
 	{
@@ -21,10 +23,16 @@ int xcuteFunc(char *string, char **array)
 			rturnV = executePathProgram(array);
 			free(string);
 		}
+		pcount2 = *pcount;
+		pcount2++;
+		*pcount = pcount2;
 	}
 	else
 	{
-		fprintf(stderr, "%s: not found\n", array[0]);
+		pcount2 = *pcount;
+		pcount2++;
+		*pcount = pcount2;
+		fprintf(stderr, "./hsh: %d %s: not found\n", pcount2, array[0]);
 		rturnV = 127;
 	}
 	return (rturnV);
