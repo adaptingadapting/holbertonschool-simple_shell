@@ -13,6 +13,8 @@ int main(void)
 	char *token[80] = {0};
 	size_t buffsize = 0;
 	int olde = 0;
+	int count = 0;
+	int *pcount = &count;
 
 	signal(SIGINT, sigintHandler);
 loop:
@@ -32,10 +34,10 @@ loop:
 		if (!_strcmp(token[0], "exit"))
 		{
 			free(userInput);
-			exit(0);
+			exit(olde);
 		}
 		tokenize(token, delim);
 		string = programStat(token[0]);
-		olde = xcuteFunc(string, token);
+		olde = xcuteFunc(string, token, pcount);
 	}
 }
