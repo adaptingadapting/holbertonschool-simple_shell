@@ -8,13 +8,13 @@
 
 char *programStat(char *line)
 {
-	char *token;
-	char *i = _getenv("PATH");
+	char *token, *i;
 	char *cp, *cp2, *duptoken;
 	struct stat st;
 
 	if (!_strcmp(line, "env"))
 		return ("/usr/bin/env");
+	i =  _getenv("PATH");
 	if (!(i))
 	{
 	if ((stat(line, &st) == 0) && st.st_mode == 33261)
