@@ -21,7 +21,8 @@ int xcuteFunc(char *string, char **array, int *pcount)
 		{
 			array[0] = string;
 			rturnV = executePathProgram(array);
-			free(string);
+			if (_strcmp(string, "/usr/bin/env"))
+				free(string);
 		}
 		pcount2 = *pcount;
 		pcount2++;
